@@ -1,3 +1,5 @@
 venv/*
 monopolyrandom.code-workspace
-*/__pycache__/*
+tests/__pycache__/*
+Game/__pycache__/*
+.pytest_cache/*

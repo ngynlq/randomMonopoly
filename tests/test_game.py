@@ -1,6 +1,7 @@
 from Game.Game import Game
 from Game.Player import Player
-from Game.Action import Action
+from Game.Interface.Action import Action
+from Game.Actions import *
 
 def test_game_over():
     game = Game()
@@ -12,7 +13,6 @@ def test_setPlayers():
     a = [Player(),Player()]
     game.setPlayers(a)
     assert game.getPlayers() != None
-
 
 def test_game_over_true():
     game = Game()
@@ -80,7 +80,7 @@ def test_payPool():
 
 def test_moveToJail():
     game = Game(players=[Player()])
-    game.setBoard([Action(id="None"),Action(id="jail")])
+    game.setBoard([null.Null(),jail.Jail()])
     game.moveToJail(0)
     assert game.getPlayer(0).getJail() == True
     assert game.getPlayer(0).getPos() == 1

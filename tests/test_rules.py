@@ -1,7 +1,8 @@
 from Game.rules import Rules
 from Game.Game import Game
 from Game.Player import Player
-from Game.Action import Action
+from Game.Interface.Action import Action
+from Game.Actions import jail,null
 
 def test_roll():
     game = Game(players=[Player()])
@@ -18,7 +19,7 @@ def test_rollAgain():
 
 def test_rollJail_three():
     game = Game(players=[Player()])
-    game.setBoard([Action(id="None"),Action(id="jail")])
+    game.setBoard([null.Null(),jail.Jail()])
     rule = Rules(game,jail=3)
     rule.roll(0,6,6)
     rule.roll(0,6,6)
