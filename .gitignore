@@ -1,2 +1,3 @@
 venv/*
 monopolyrandom.code-workspace
+*/__pycache__/*
