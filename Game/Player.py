@@ -5,8 +5,12 @@ class Player():
         self._money = money
         self._skip = False
         self._name = name
+        self._double = 0
+        self._jail = False
     def setPos(self,pos):
         self._pos = pos
+    def movePos(self,pos):
+        self._pos += pos
     def getPos(self):
         return self._pos;
     def rollDie(self,dice1,dice2):
@@ -25,3 +29,11 @@ class Player():
         return self._skip
     def setAlive(self,val):
         self._alive = val
+    def getDouble(self):
+        return self._double
+    def incrementDouble(self):
+        self._double +=1
+    def getJail(self):
+        return self._jail
+    def setJail(self,jail):
+        self._jail = jail

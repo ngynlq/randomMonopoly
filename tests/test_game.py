@@ -1,5 +1,7 @@
 from Game.Game import Game
 from Game.Player import Player
+from Game.Action import Action
+
 def test_game_over():
     game = Game()
     assert game.getGameOver() == False
@@ -36,7 +38,53 @@ def test_player_alive_money():
 
 def test_roll():
     game = Game()
-    game.roll()
+    game.setPlayers([Player()])
+    game.move(0,6,6)
+    assert game.getPlayer(0).getPos() == 12
+
+def test_roll_wrap():
+    game = Game()
+    game.setPlayers([Player()])
+    game.move(0,40,6)
+    assert game.getPlayer(0).getPos() == 6
+
+def test_payAll_one():
+    game = Game()
+    game.setPlayers([Player(),Player()])
+    game.payAll(0,50)
+    assert game.getPlayer(0).getMoney() == -50
+    assert game.getPlayer(1).getMoney() == 50
+
+def test_payAll_two():
+    game = Game()
+    game.setPlayers([Player(),Player(),Player()])
+    game.payAll(0,50)
+    assert game.getPlayer(0).getMoney() == -100
+    assert game.getPlayer(1).getMoney() == 50
+    assert game.getPlayer(2).getMoney() == 50
+
+def test_collect_all():
+    game = Game()
+    game.setPlayers([Player(),Player(),Player()])
+    game.collectAll(0,50)
+    assert game.getPlayer(0).getMoney() == 100
+    assert game.getPlayer(1).getMoney() == -50
+    assert game.getPlayer(2).getMoney() == -50
+
+def test_payPool():
+    game = Game()
+    game.addToPool(500)
+    assert game.getPool() == 500
+    game.addToPool(55)
+    assert game.getPool() == 555
+
+def test_moveToJail():
+    game = Game(players=[Player()])
+    game.setBoard([Action(id="None"),Action(id="jail")])
+    game.moveToJail(0)
+    assert game.getPlayer(0).getJail() == True
+    assert game.getPlayer(0).getPos() == 1
+
 
 
 
