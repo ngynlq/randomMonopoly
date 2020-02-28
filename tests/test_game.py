@@ -2,6 +2,7 @@ from Game.Game import Game
 from Game.Player import Player
 from Game.Interface.Action import Action
 from Game.Actions import *
+from Game.Deed import Deed
 
 def test_game_over():
     game = Game()
@@ -84,6 +85,16 @@ def test_moveToJail():
     game.moveToJail(0)
     assert game.getPlayer(0).getJail() == True
     assert game.getPlayer(0).getPos() == 1
+'''
+def test_trade_money():
+    game = Game(players=[Player(),Player()])
+    game.getPlayer(0).addDeed(Deed())
+    game.trade(0,Deed(),1,500)
+    assert game.getPlayer(0).getMoney() == 500
+    assert game.getPlayer(1).getMoney() == -500
+    assert game.getPlayer(0).getDeeds() == []
+    assert game.getPlayer(1).getDeeds() == [Deed()]
+'''
 
 
 

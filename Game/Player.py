@@ -7,6 +7,7 @@ class Player():
         self._name = name
         self._double = 0
         self._jail = False
+        self.__deeds = []
     def setPos(self,pos):
         self._pos = pos
     def movePos(self,pos):
@@ -37,3 +38,9 @@ class Player():
         return self._jail
     def setJail(self,jail):
         self._jail = jail
+    def getDeeds(self):
+        return self.__deeds
+    def addDeed(self,deed):
+        self.__deeds.append(deed)
+    def removeDeed(self,deed):
+        return self.__deeds.pop()

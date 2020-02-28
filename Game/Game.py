@@ -67,6 +67,15 @@ class Game():
         play = self.__players[index]
         pos = play.getPos()
         self.__board[pos].run()
+    def setPool(self,amount):
+        self.__pool = amount
+    def trade(self,seller,item,buyer,amount):
+        sell = self.__players[seller]
+        sell.updateMoney(500)
+        deed = sell.removeDeed("a")
+        buy = self.__players[buyer]
+        buy.addDeed(deed)
+        buy.updateMoney(-500)
 
 
 if __name__ == "__main__":

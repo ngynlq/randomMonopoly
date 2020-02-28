@@ -6,5 +6,5 @@ class Action(ABC):
     def getId(self):
         return self.__id
     @abstractmethod
-    def run(self):
+    def run(self,index,game):
         pass
