@@ -1,5 +1,5 @@
 class Deed:
-    def __init__(self, id, group, value, housePrice=0, hotelPrice=0):
+    def __init__(self, id, group, value, housePrice=0, hotelPrice=0, rent=0):
         self.__id = id
         self.__mortgage = False
         self.__group = group
@@ -9,6 +9,7 @@ class Deed:
         self.__morgagePrice = 0
         self.__housePrice = housePrice
         self.__hotelPrice = hotelPrice
+        self.__rent = rent
 
     def getID(self):
         return self.__id
@@ -50,3 +51,6 @@ class Deed:
 
     def getUpgradeCost(self, house=0, hotel=0):
         return house * self.__housePrice + hotel * self.__hotelPrice
+
+    def calculateRent(self, group):
+        return 5

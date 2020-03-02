@@ -67,4 +67,15 @@ def test_rent_basic():
     deed = Deed(
         id="aaa", group="red", value=val, housePrice=house, hotelPrice=hotel, rent=5
     )
-    assert deed.rent(false) == 5
+    assert deed.calculateRent(False) == 5
+
+
+def test_rent_houses():
+    val = 5
+    house = 10
+    hotel = 5
+    deed = Deed(
+        id="aaa", group="red", value=val, housePrice=house, hotelPrice=hotel, rent=5
+    )
+    deed.setHouses(2)
+    assert deed.calculateRent(False) == 5
